@@ -10,7 +10,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("transport/ui/MainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/MainMenu.fxml"));
         primaryStage.setTitle("ESI-RUN Transport System");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
