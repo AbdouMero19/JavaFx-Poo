@@ -21,4 +21,12 @@ public class Data {
     public static boolean employeeExists(String id){
         return employeeData.containsKey(id);
     }
+
+    public static Usager getPassenger(int id){
+        return passengerData.get(id);
+    }
+
+    public static Employe getEmployee(String id){
+        return employeeData.get(id);
+    }
 }

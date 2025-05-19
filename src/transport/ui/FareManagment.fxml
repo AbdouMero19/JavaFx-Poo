@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.CartePersonnelleController">
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.FareManagement">
 
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Fare Managment" />
 
-    <Button fx:id="UserManagementBTN2" onAction="#acheterTicketSimple" style="-fx-font-size: 14; -fx-min-width: 200;" text="Buy new ticket"  />
-   <Button fx:id="UserManagementBTN1" layoutX="50.0" layoutY="105.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Carte navigation personnel" onAction="#navigate2" />
+    <Button fx:id="UserManagementBTN2"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Buy new ticket"  />
+   <Button fx:id="UserManagementBTN1" onAction="#navigateCartePersonnelle"  layoutX="50.0" layoutY="105.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Carte navigation personnel"  />
    <Button fx:id="UserManagementBTN11" layoutX="50.0" layoutY="155.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Check validite" />
 
 </VBox>

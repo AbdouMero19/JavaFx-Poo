@@ -5,7 +5,7 @@ import java.time.*;
 
 public class Usager extends Personne {
 
-    static int id ;
+    static int id=0 ;
     private int userID;
 
 

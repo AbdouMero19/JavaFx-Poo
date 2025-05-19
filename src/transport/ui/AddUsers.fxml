@@ -18,13 +18,13 @@
     </ImageView>
    <TextField fx:id="firstName" promptText="First Name" />
    <TextField fx:id="lastName" layoutX="50.0" layoutY="275.0" promptText="Last Name" />
-   <DatePicker fx:id="birthday" prefHeight="25.0" prefWidth="437.0" promptText="Date of Birth" />
-   <ComboBox fx:id="handicapeSelect" editable="true" prefHeight="25.0" prefWidth="349.0" promptText="Handicaped" />
-   <ComboBox fx:id="roleSelect" editable="true" prefHeight="25.0" prefWidth="351.0" promptText="Role" />
+   <DatePicker fx:id="birthday" editable="false" prefHeight="25.0" prefWidth="437.0" promptText="Date of Birth" />
+   <ComboBox fx:id="handicapeSelect" prefHeight="25.0" prefWidth="349.0" promptText="Handicaped" />
+   <ComboBox fx:id="roleSelect" onAction="#toggleVisibility" prefHeight="25.0" prefWidth="351.0" promptText="Role" />
    <TextField fx:id="employeeID" layoutX="50.0" layoutY="275.0" promptText="ID" visible="false" />
    <ComboBox fx:id="jobSelect" editable="true" prefHeight="25.0" prefWidth="346.0" promptText="Job" visible="false" />
 
     <Button fx:id="AddUserBTN" defaultButton="true" minWidth="130.0" onAction="#addUser" prefHeight="30.0" prefWidth="130.0" style="-fx-font-size: 14; -fx-min-width: 200;" text="Add User" />
-    <Button fx:id="exitBTN" minWidth="131.0" prefHeight="30.0" prefWidth="131.0" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #ff4444; -fx-text-fill: white;" text="Exit" />
+    <Button fx:id="exitBTN" minWidth="131.0" onAction="#returnToMainMenu" prefHeight="30.0" prefWidth="131.0" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #ff4444; -fx-text-fill: white;" text="Return" />
 
 </VBox>
