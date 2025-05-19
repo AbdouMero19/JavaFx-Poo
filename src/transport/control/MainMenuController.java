@@ -10,24 +10,25 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-    @FXML private Button fareMediaButton;
-    @FXML private Button validateFareButton;
-    @FXML private Button complaintsButton;
-    @FXML private Button exitButton;
+    public Button UserManagementBTN;
+    public Button FareManagementBTN;
+    public Button ComplaintsManagementBTN;
+    public Button exitButton;
+
 
     @FXML
     private void initialize() {
         // Button actions
-        fareMediaButton.setOnAction(e -> loadScene("ManageFareMedia.fxml", "Manage Fare Media"));
-        validateFareButton.setOnAction(e -> loadScene("ValidateFare.fxml", "Validate Fare"));
-        complaintsButton.setOnAction(e -> loadScene("ManageComplaints.fxml", "Manage Complaints"));
+        UserManagementBTN.setOnAction(e -> loadScene("UserManagement.fxml", "Manage Users"));
+        FareManagementBTN.setOnAction(e -> loadScene("ValidateFare.fxml", "Manage Fares"));
+        ComplaintsManagementBTN.setOnAction(e -> loadScene("ManageComplaints.fxml", "Manage Complaints"));
         exitButton.setOnAction(e -> System.exit(0));
     }
 
     private void loadScene(String fxmlFile, String title) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/" + fxmlFile));
-            Stage stage = (Stage) fareMediaButton.getScene().getWindow();
+            Stage stage = (Stage) UserManagementBTN.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle(title);
             stage.show();
