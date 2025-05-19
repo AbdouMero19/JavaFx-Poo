@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import transport.core.*;
 
@@ -13,91 +14,84 @@ import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
+
 public class CartePersonnelleController {
-    
-    /**
-     * Crée une carte personnelle pour un usager
-     * @param usager La personne pour qui créer la carte
-     * @return La carte personnelle créée
-     * @throws ReductionImpossibleException Si aucune réduction n'est applicable
-     */
-    public CartePersonnelle creerCartePersonnelle(Personne usager) throws ReductionImpossibleException {
+
+
+    public javafx.scene.control.TextField id;
+    public javafx.scene.control.Label price;
+    @FXML
+    private ComboBox<String> userTypeComboBox;
+
+    @FXML
+    public void initialize() {
+        // Populate the ComboBox
+        userTypeComboBox.getItems().addAll(
+                "Passenger","Employee"
+        );
+    }
+
+    @FXML
+    private void returnToMainMenu(ActionEvent event) throws IOException {
         try {
-            // Correction du bug dans le constructeur de CartePersonnelle
-            // Le constructeur actuel lance toujours une exception, nous devons donc
-            // créer la carte et calculer la réduction manuellement
-            CartePersonnelle carte = new CartePersonnelle(usager);
-            carte.calculateReduction(usager);
-            return carte;
-        } catch (ReductionImpossibleException e) {
-            throw new ReductionImpossibleException();
-        }
-    }
-    
-    /**
-     * Vérifie si une carte est valide
-     * @param carte La carte à vérifier
-     * @param dateAchat La date d'achat de la carte
-     * @return true si la carte est valide
-     * @throws TitreNonValideException Si la carte n'est pas valide
-     */
-    public boolean verifierValiditeCarte(CartePersonnelle carte, LocalDate dateAchat) throws TitreNonValideException {
-        return carte.estValide(dateAchat);
-    }
-    
-    /**
-     * Obtient le type de réduction applicable pour un usager
-     * @param usager La personne à évaluer
-     * @return Le type de carte applicable ou null si aucune réduction n'est possible
-     */
-
-
-    /**
-     * Calcule le prix d'une carte personnelle pour un usager
-     * @param usager La personne pour qui calculer le prix
-     * @return Le prix de la carte ou -1 si aucune réduction n'est applicable
-     */
-    @FXML
-    private Button UserManagementBTN;
-    @FXML
-    private Ticket acheterTicketSimple(ActionEvent t) {
-        // Prix de base d'un ticket simple en dinars algériens
-        // Création du ticket
-        Ticket ticket = new Ticket();
-        System.out.println("5o dz"+ticket.getPrix());
-        return ticket;
-    }
-
-    /**
-     * Calcule automatiquement le prix de la carte avec la bonne réduction selon le profil de l'usager
-     * @param usager La personne pour qui calculer le prix de la carte
-     * @return Le prix calculé avec la réduction applicable ou -1 si aucune réduction n'est applicable
-     */
-    @FXML
-    private double Carte_personnel(Personne usager) {
-        try {
-            CartePersonnelle carte = new CartePersonnelle(usager);
-            carte.calculateReduction(usager);
-            return carte.getPrix();
-        } catch (ReductionImpossibleException e) {
-            System.out.println("Aucune réduction applicable pour cet usager");
-            return -1;
-        }
-    }
-
-
-    @FXML
-    private void navigate2 (ActionEvent event) {
-        try {
-            Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/Carte__personnel_ui.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
-
-            // Get the stage from the event
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.setScene(secondScene);
-            currentStage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/MainMenu.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-}
+
+    @FXML
+    private void achterCarte (){
+
+        if (id.getText().trim().isEmpty() || userTypeComboBox.getValue().equals("")){
+            System.out.println("Erreur : Missing information");
+        }
+    if (userTypeComboBox.getValue().equals("Passenger")){
+        int userID;
+        try {
+            userID = Integer.parseInt(id.getText().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Erreur");
+            return;
+        }
+        if(!Data.paasengerExists(userID)){
+            System.out.println("Erreur : User does not exist");
+            return;
+        }
+        try {
+            Usager user = Data.getPassenger(userID);
+            TitreTransport titre = new CartePersonnelle(user);
+            GestionDeDonne.ajouterTitre(titre);
+            price.setText(String.valueOf(titre.getPrix()));
+        } catch ( ReductionImpossibleException e) {
+            System.out.println("User not eligible for a reduction");
+            return;
+        }
+    } else if (userTypeComboBox.getValue().equals("Employee")) {
+        String employeeID = id.getText().trim();
+        if (!Data.employeeExists(employeeID)){
+            System.out.println("Erreur : employee does not exist");
+            return;
+        }
+        try {
+            Employe user = Data.getEmployee(employeeID);
+            TitreTransport titre = new CartePersonnelle(user);
+            GestionDeDonne.ajouterTitre(titre);
+            price.setText(String.valueOf(titre.getPrix()));
+        } catch (ReductionImpossibleException e) {
+            System.out.println("User not eligible for a reduction");
+            return;
+        }
+    }
+
+    System.out.println("Fare created succssfully");
+
+
+    }
+
+    }
+
+

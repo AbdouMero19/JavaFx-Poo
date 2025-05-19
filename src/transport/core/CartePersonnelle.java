@@ -30,10 +30,15 @@ public class CartePersonnelle extends TitreTransport {
 
   //constructor 
   public CartePersonnelle(Personne usager) throws ReductionImpossibleException {
-   this.Nom=usager.nom;
-   this.prenom=usager.prenom;
-   calculateReduction(usager);
+      try {
+          this.Nom = usager.nom;
+          this.prenom = usager.prenom;
+          this.dateAchat = LocalDate.now();
+          calculateReduction(usager);
+      } catch (Exception e) {
    throw new ReductionImpossibleException();
+
+      }
    }
 
   public void  calculateReduction(Personne usager) throws ReductionImpossibleException{

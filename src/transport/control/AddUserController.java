@@ -17,11 +17,11 @@ import transport.core.*;
 public class AddUserController {
 
     @FXML
-    private ComboBox<Boolean> handicapeSelect;
+    private ComboBox<String> handicapeSelect;
     @FXML
     private ComboBox<String> roleSelect;
     @FXML
-    private ComboBox<TypeFonction> jobSelect;
+    private ComboBox<String> jobSelect;
     @FXML
     private Button AddUserBTN;
     @FXML
@@ -32,15 +32,30 @@ public class AddUserController {
     private DatePicker birthday;
     @FXML
     private TextField employeeID;
+    @FXML
+    private Button exitBTN;
+
 
     @FXML
     public void initialize() {
         // Populate the ComboBox
         handicapeSelect.getItems().addAll(
-                true , false
+                "True","False"
         );
         roleSelect.getItems().addAll("Passenger", "Employee");
-        jobSelect.getItems().addAll(TypeFonction.AGENT, TypeFonction.CONDUCTEUR);
+        jobSelect.getItems().addAll("AGENT", "CONDUCTEUR");
+    }
+
+    @FXML
+    private void returnToMainMenu(ActionEvent event) throws IOException {
+        try {
+        Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/MainMenu.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -48,9 +63,13 @@ public class AddUserController {
         if (roleSelect.getValue().equals("Employee")) {
             employeeID.setVisible(true);
             employeeID.setManaged(true);
+            jobSelect.setVisible(true);
+            jobSelect.setManaged(true);
         } else {
             employeeID.setVisible(false);
             employeeID.setManaged(false);
+            jobSelect.setVisible(false);
+            jobSelect.setManaged(false);
         }
     }
 
@@ -58,22 +77,34 @@ public class AddUserController {
     private void addUser(ActionEvent event)  {
         String firstNameText = firstName.getText();
         String lastNameText = lastName.getText();
-        //boolean handicape = handicapeSelect.getValue();
+        boolean handicape = true;
+        if (handicapeSelect.getValue().equals("False")) {
+            handicape = false;
+        } else {
+            handicape = true;
+        }
         String role = roleSelect.getValue();
-        TypeFonction job = jobSelect.getValue();
+        String job = jobSelect.getValue();
         LocalDate dateOfBirth = birthday.getValue();
         String employeeIDText = employeeID.getText();
 
         if (firstNameText.isEmpty() || lastNameText.isEmpty()
                 || (!role.equals("Passenger") && !role.equals("Employee"))
-                || dateOfBirth == null){
+                || dateOfBirth == null || (role.equals("Employee") && (employeeIDText.isEmpty() || job.isEmpty()))){
                 System.out.println("Erreur");
         }
-
+        TypeFonction typeFonction = null;
+        if (role.equals("Employee")) {
+            if (job.equals("AGENT")) {
+                typeFonction = TypeFonction.AGENT;
+            } else if (job.equals("CONDUCTEUR")) {
+                typeFonction = TypeFonction.CONDUCTEUR;
+            }
+        }
         Personne user = null;
 
         if (role.equals("Passenger")) {
-            user = new Usager(firstNameText, lastNameText, dateOfBirth, false);
+            user = new Usager(firstNameText, lastNameText, dateOfBirth, handicape);
             Data.addPassenger((Usager) user);
         System.out.println("User added " + user.getNom() + " " + user.getPrenom());
         if (Data.paasengerExists(((Usager) user).getUserID())){
@@ -83,8 +114,14 @@ public class AddUserController {
         }
 
         } else {
-            user = new Employe(firstNameText, lastNameText, dateOfBirth, false, employeeIDText, job);
+            user = new Employe(firstNameText, lastNameText, dateOfBirth, handicape, employeeIDText, typeFonction);
             Data.addEmployee((Employe) user);
+            System.out.println("User added " + user.getNom() + " " + user.getPrenom());
+            if (Data.employeeExists(((Employe) user).getId())){
+                System.out.println("User already exists");
+            } else {
+                System.out.println("User added");
+            }
         }
 
 
