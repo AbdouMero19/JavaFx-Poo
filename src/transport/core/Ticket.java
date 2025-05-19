@@ -11,6 +11,10 @@ public class Ticket extends TitreTransport {
 
     }
 
+    public double  getPrix(){
+return this.prix;
+    }
+
     public boolean estValide (LocalDate date) throws TitreNonValideException {
      if ( dateAchat.isEqual(date)) {
         return true;

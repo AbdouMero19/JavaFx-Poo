@@ -20,7 +20,20 @@ public class MainMenuController {
 
 
 
+    @FXML
+    private void navigateUserManagement (ActionEvent event) {
+        try {
+            Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/UserManagement.fxml"));
+            Scene secondScene = new Scene(AddUserRoot);
 
+            // Get the stage from the event
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.setScene(secondScene);
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private void navigate (ActionEvent event) {
