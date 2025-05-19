@@ -59,4 +59,7 @@ public class GestionDeDonne  {
     
     return resultat;
 }
+public static boolean titreExists(int id){
+    return titresParId.containsKey(id);
+}
 }

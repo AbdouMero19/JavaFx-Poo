@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.MainMenuController">
+<VBox alignment="CENTER" prefHeight="597.0" prefWidth="504.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.MainMenuController">
 
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="ESI-RUN Transport System" />
    <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -18,7 +18,7 @@
    </ImageView>
 
     <Button fx:id="UserManagementBTN" onAction="#navigateUserManagement" style="-fx-font-size: 14; -fx-min-width: 200;" text="Users Management" />
-    <Button fx:id="FareManagementBTN" style="-fx-font-size: 14; -fx-min-width: 200;" text="Fare Management" onAction="#navigate" />
+    <Button fx:id="FareManagementBTN" onAction="#navigate" style="-fx-font-size: 14; -fx-min-width: 200;" text="Fare Management" />
     <Button fx:id="ComplaintsManagementBTN" style="-fx-font-size: 14; -fx-min-width: 200;" text="Compaints Management" />
     <Button fx:id="exitButton" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #ff4444; -fx-text-fill: white;" text="Exit" />
 

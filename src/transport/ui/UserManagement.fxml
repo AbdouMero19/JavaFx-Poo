@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.UserManagementController">
+<VBox alignment="CENTER" prefHeight="538.0" prefWidth="444.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.UserManagementController">
 
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="User Management" />
     <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
