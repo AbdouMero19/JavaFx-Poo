@@ -1,13 +1,10 @@
 package transport.core;
+
 import java.time.*;
 // Classe Usager
 
-import java.time.LocalDate;
-
-
-
 public class Usager extends Personne {
-    static int id ;
+    static int id ; 
 
     public Usager (String prenom , String nom , LocalDate dateNaissance , boolean handicap ) {
         this.nom = nom;
@@ -20,5 +17,5 @@ public class Usager extends Personne {
     public static int getId() {
         return id;
     }
-
+  
 }

@@ -2,9 +2,15 @@ package transport.control;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import transport.core.*;
 
 import java.awt.*;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class CartePersonnelleController {
@@ -24,7 +30,7 @@ public class CartePersonnelleController {
             carte.calculateReduction(usager);
             return carte;
         } catch (ReductionImpossibleException e) {
-            throw new ReductionImpossibleException("Aucune réduction applicable pour cet usager");
+            throw new ReductionImpossibleException();
         }
     }
     
@@ -62,4 +68,36 @@ public class CartePersonnelleController {
         return ticket;
     }
 
+    /**
+     * Calcule automatiquement le prix de la carte avec la bonne réduction selon le profil de l'usager
+     * @param usager La personne pour qui calculer le prix de la carte
+     * @return Le prix calculé avec la réduction applicable ou -1 si aucune réduction n'est applicable
+     */
+    @FXML
+    private double Carte_personnel(Personne usager) {
+        try {
+            CartePersonnelle carte = new CartePersonnelle(usager);
+            carte.calculateReduction(usager);
+            return carte.getPrix();
+        } catch (ReductionImpossibleException e) {
+            System.out.println("Aucune réduction applicable pour cet usager");
+            return -1;
+        }
+    }
+
+
+    @FXML
+    private void navigate2 (ActionEvent event) {
+        try {
+            Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/Carte__personnel_ui.fxml"));
+            Scene secondScene = new Scene(AddUserRoot);
+
+            // Get the stage from the event
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.setScene(secondScene);
+            currentStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

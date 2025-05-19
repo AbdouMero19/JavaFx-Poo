@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.CartePersonnelleController">
+
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Carte Personnel" />
+
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Enter ID:" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" />
+        <TextField fx:id="idTextField" prefWidth="200" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;" />
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="User Type:" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" />
+        <ComboBox fx:id="userTypeComboBox" prefWidth="200" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Employee" />
+                    <String fx:value="Passenger" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <!-- Ajout d'une autre ComboBox pour les options de carte qui apparaîtra selon le type d'utilisateur -->
+    <HBox alignment="CENTER" spacing="10">
+    </HBox>
+
+    <!-- Affichage du prix calculé -->
+    <HBox alignment="CENTER" spacing="10">
+        <Label text="Price:" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" />
+        <Label fx:id="priceLabel" text="0.00" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" />
+    </HBox>
+
+    <Button fx:id="createButton"  style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Create Card" />
+    
+    <Button fx:id="backButton" onAction="#navigate2" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Back" />
+
+</VBox>

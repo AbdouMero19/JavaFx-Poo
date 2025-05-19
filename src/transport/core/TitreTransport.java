@@ -1,16 +1,16 @@
-package transport.core ;
+package transport.core;
 import java.time.*;
 
 
 // Classe abstraite pour les titres de transport
 abstract public class TitreTransport {
-
+       
     protected  static int id;
     protected LocalDate dateAchat;
     protected double prix;
+    
 
-
-    // getters
+    // getters 
     public int getId() {
         return id;
     }
@@ -35,5 +35,5 @@ abstract public class TitreTransport {
     }
 
     abstract  public boolean  estValide (LocalDate dateAchat) throws TitreNonValideException ;
-
+    
 }

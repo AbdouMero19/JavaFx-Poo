@@ -1,4 +1,5 @@
 package transport.core;
+
 import java.time.*;
 
 public class Ticket extends TitreTransport {
@@ -11,11 +12,11 @@ public class Ticket extends TitreTransport {
     }
 
     public boolean estValide (LocalDate date) throws TitreNonValideException {
-        if ( dateAchat.isEqual(date)) {
-            return true;
-        }
-        else{
-            throw new TitreNonValideException();
-        }
+     if ( dateAchat.isEqual(date)) {
+        return true;
+     }
+     else{
+        throw new TitreNonValideException();
+     }
     }
 }
