@@ -44,6 +44,8 @@ public class AddUserController {
         );
         roleSelect.getItems().addAll("Passenger", "Employee");
         jobSelect.getItems().addAll("AGENT", "CONDUCTEUR");
+        jobSelect.setManaged(false);
+        employeeID.setManaged(false);
     }
 
     @FXML
