@@ -8,7 +8,7 @@
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Fare Managment" />
 
     <Button fx:id="UserManagementBTN2" onAction="#acheterTicketSimple" style="-fx-font-size: 14; -fx-min-width: 200;" text="Buy new ticket"  />
-   <Button fx:id="UserManagementBTN1" layoutX="50.0" layoutY="105.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Carte navigation personnel" />
+   <Button fx:id="UserManagementBTN1" layoutX="50.0" layoutY="105.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Carte navigation personnel" onAction="#navigate2" />
    <Button fx:id="UserManagementBTN11" layoutX="50.0" layoutY="155.0"  style="-fx-font-size: 14; -fx-min-width: 200;" text="Check validite" />
 
 </VBox>
