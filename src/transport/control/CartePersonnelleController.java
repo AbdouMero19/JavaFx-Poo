@@ -24,7 +24,7 @@ public class CartePersonnelleController {
             carte.calculateReduction(usager);
             return carte;
         } catch (ReductionImpossibleException e) {
-            throw new ReductionImpossibleException("Aucune réduction applicable pour cet usager");
+            throw new ReductionImpossibleException();
         }
     }
     
