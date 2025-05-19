@@ -11,9 +11,7 @@ abstract public class TitreTransport {
     
 
     // getters 
-    public int getId() {
-        return id;
-    }
+    
 
     public LocalDate getDateAchat() {
         return dateAchat;

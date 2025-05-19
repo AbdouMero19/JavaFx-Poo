@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.history_ticket">
+    <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Historique des Titres de Transport" />
+    
+    <!-- TableView pour afficher les titres de transport -->
+    <TableView fx:id="titresTableView" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="50.0" text="ID" />
+            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date d'achat" />
+            <TableColumn fx:id="typeColumn" prefWidth="150.0" text="Type de titre" />
+            <TableColumn fx:id="prixColumn" prefWidth="100.0" text="Prix" />
+        </columns>
+    </TableView>
+    
+    <HBox alignment="CENTER" spacing="20" />
+    <Button fx:id="backButton" onAction="#returnToFareManagement" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Back" />
+    
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</VBox>

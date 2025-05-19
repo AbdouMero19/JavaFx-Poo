@@ -17,23 +17,26 @@ public class GestionDeDonne  {
 
     
     // Comparateur pour trier les titres par ID quand ils ont la même date
-    private static class TitreComparator implements Comparator<TitreTransport>, Serializable {
+   /* private static class TitreComparator implements Comparator<TitreTransport>, Serializable {
 
-        
+
         @Override
         public int compare(TitreTransport t1, TitreTransport t2) {
             if (t1.getId() == t2.getId()) return 0;
             return t1.getId() - t2.getId();
         }
-    }
+    }*/
 
 
     public static void ajouterTitre(TitreTransport titre) {
         
         LocalDate dateAchat = titre.getDateAchat();
+        if (titre instanceof Ticket){
+        titresParId.put(((Ticket) titre).getId(), titre);
+        } else {
+            titresParId.put(((CartePersonnelle) titre).getId(), titre);
+        }
 
-        titresParId.put(titre.getId(), titre);
-        
         // Ajouter dans le TreeMap trié par date
 
             titresParDate.put(dateAchat, titre);

@@ -6,6 +6,7 @@ public class CartePersonnelle extends TitreTransport {
   protected String Nom;
   protected String prenom;
   protected Typecarte type;
+  protected int id ;
 
   //getters
   public String getNom() {
@@ -28,18 +29,25 @@ public class CartePersonnelle extends TitreTransport {
       this.type = type;
   }
 
+
   //constructor 
   public CartePersonnelle(Personne usager) throws ReductionImpossibleException {
       try {
           this.Nom = usager.nom;
           this.prenom = usager.prenom;
           this.dateAchat = LocalDate.now();
+          TitreTransport.id = TitreTransport.id + 1;
+          this.id = TitreTransport.id;
           calculateReduction(usager);
       } catch (Exception e) {
    throw new ReductionImpossibleException();
 
       }
    }
+
+    public int getId() {
+        return id;
+    }
 
   public void  calculateReduction(Personne usager) throws ReductionImpossibleException{
    if (usager.getHandicap()==true){
@@ -49,6 +57,7 @@ public class CartePersonnelle extends TitreTransport {
     return ;
     
   }
+
  if (usager instanceof Employe){
     this.prix=5000*0.6;
     this.type=Typecarte.PARTENAIRE;
