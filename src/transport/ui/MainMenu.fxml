@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="transport.control.MainMenuController" spacing="20" alignment="CENTER"
+      style="-fx-background-color: #f0f0f0; -fx-padding: 40;">
+
+    <Label text="ESI-RUN Transport System" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+
+    <Button text="Manage Fare Media" fx:id="fareMediaButton" style="-fx-font-size: 14; -fx-min-width: 200;"/>
+    <Button text="Validate Fare" fx:id="validateFareButton" style="-fx-font-size: 14; -fx-min-width: 200;"/>
+    <Button text="Manage Complaints (Bonus)" fx:id="complaintsButton" style="-fx-font-size: 14; -fx-min-width: 200;"/>
+    <Button text="Exit" fx:id="exitButton" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #ff4444; -fx-text-fill: white;"/>
+
+</VBox>
