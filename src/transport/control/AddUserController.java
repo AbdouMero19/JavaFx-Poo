@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class AddUserController {
     private TextField employeeID;
     @FXML
     private Button exitBTN;
+    public javafx.scene.control.Label resultLabel;
 
 
     @FXML
@@ -46,6 +48,9 @@ public class AddUserController {
         jobSelect.getItems().addAll("AGENT", "CONDUCTEUR");
         jobSelect.setManaged(false);
         employeeID.setManaged(false);
+        resultLabel.setVisible(false);
+        resultLabel.setManaged(false);
+
     }
 
     @FXML
@@ -94,6 +99,11 @@ public class AddUserController {
                 || (!role.equals("Passenger") && !role.equals("Employee"))
                 || dateOfBirth == null || (role.equals("Employee") && (employeeIDText.isEmpty() || job.isEmpty()))){
                 System.out.println("Erreur");
+                resultLabel.setText("Missing information");
+                resultLabel.setTextFill(Color.RED);
+                resultLabel.setVisible(true);
+                resultLabel.setManaged(true);
+                return;
         }
         TypeFonction typeFonction = null;
         if (role.equals("Employee")) {
@@ -109,21 +119,19 @@ public class AddUserController {
             user = new Usager(firstNameText, lastNameText, dateOfBirth, handicape);
             Data.addPassenger((Usager) user);
         System.out.println("User added " + user.getNom() + " " + user.getPrenom());
-        if (Data.paasengerExists(((Usager) user).getUserID())){
-            System.out.println("User already exists");
-        } else {
-            System.out.println("User added");
-        }
+            resultLabel.setText("Passenger created successfully");
+            resultLabel.setTextFill(Color.GREEN);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
 
         } else {
             user = new Employe(firstNameText, lastNameText, dateOfBirth, handicape, employeeIDText, typeFonction);
             Data.addEmployee((Employe) user);
             System.out.println("User added " + user.getNom() + " " + user.getPrenom());
-            if (Data.employeeExists(((Employe) user).getId())){
-                System.out.println("User already exists");
-            } else {
-                System.out.println("User added");
-            }
+            resultLabel.setText("Emloyee created successfully");
+            resultLabel.setTextFill(Color.GREEN);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
         }
 
 

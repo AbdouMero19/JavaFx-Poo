@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="535.0" prefWidth="533.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.FareManagmentController">
 
@@ -12,10 +13,15 @@
             <Image url="@../../../../../Pictures/ESI_run.jpeg" />
         </image>
     </ImageView>
+   <Label fx:id="resultLabel" text="Label">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
     <Button fx:id="UserManagementBTN2" onAction="#acheterTicketSimple" style="-fx-font-size: 14; -fx-min-width: 200;" text="Buy new ticket" />
    <Button fx:id="UserManagementBTN1" layoutX="50.0" layoutY="105.0" onAction="#navigateCartePersonnelle" style="-fx-font-size: 14; -fx-min-width: 200;" text="Carte navigation personnel" />
    <Button fx:id="HistoryBTN" layoutX="50.0" layoutY="155.0" onAction="#navigate3" style="-fx-font-size: 14; -fx-min-width: 200;" text="History" />
    <Button fx:id="validateBTN" layoutX="50.0" layoutY="255.0" onAction="#navigateToValidate" style="-fx-font-size: 14; -fx-min-width: 200;" text="Validate" />
-   <Button fx:id="returnBTN" layoutX="50.0" layoutY="155.0" onAction="#returnToMainMenu" style="-fx-font-size: 14; -fx-min-width: 200;" text="Return" />
+   <Button fx:id="returnBTN" defaultButton="true" layoutX="50.0" layoutY="155.0" onAction="#returnToMainMenu" style="-fx-font-size: 14; -fx-min-width: 200;" text="Return" />
 
 </VBox>
