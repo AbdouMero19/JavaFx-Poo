@@ -12,7 +12,7 @@
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Add User" />
     <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../../../Pictures/ESI_run.jpeg" />
+            <Image url="/transport/assets/ESI_run.jpeg" />
         </image>
         <effect>
             <Blend mode="SOFT_LIGHT" opacity="0.03" />
