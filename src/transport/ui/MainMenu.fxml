@@ -19,7 +19,6 @@
 
     <Button fx:id="UserManagementBTN" onAction="#navigateUserManagement" style="-fx-font-size: 14; -fx-min-width: 200;" text="Users Management" />
     <Button fx:id="FareManagementBTN" onAction="#navigate" style="-fx-font-size: 14; -fx-min-width: 200;" text="Fare Management" />
-    <Button fx:id="ComplaintsManagementBTN" style="-fx-font-size: 14; -fx-min-width: 200;" text="Compaints Management" />
     <Button fx:id="exitButton" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #ff4444; -fx-text-fill: white;" text="Exit" />
 
 </VBox>

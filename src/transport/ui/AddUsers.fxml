@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+
 <VBox alignment="CENTER" prefHeight="760.0" prefWidth="501.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.AddUserController">
 
     <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Add User" />
