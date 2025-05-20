@@ -22,12 +22,17 @@ public class CartePersonnelleController {
     public javafx.scene.control.Label price;
     @FXML
     private ComboBox<String> userTypeComboBox;
+    @FXML
+    private ComboBox<String> paymentSelect;
 
     @FXML
     public void initialize() {
         // Populate the ComboBox
         userTypeComboBox.getItems().addAll(
                 "Passenger","Employee"
+        );
+        paymentSelect.getItems().addAll(
+                "Cash","Dahabia","BaridiMob"
         );
         resultLabel.setVisible(false);
         resultLabel.setManaged(false);
