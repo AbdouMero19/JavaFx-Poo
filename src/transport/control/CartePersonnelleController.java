@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 public class CartePersonnelleController {
 
-
+    public javafx.scene.control.Label resultLabel;
     public javafx.scene.control.TextField id;
     public javafx.scene.control.Label price;
     @FXML
@@ -29,12 +29,14 @@ public class CartePersonnelleController {
         userTypeComboBox.getItems().addAll(
                 "Passenger","Employee"
         );
+        resultLabel.setVisible(false);
+        resultLabel.setManaged(false);
     }
 
     @FXML
     private void returnToMainMenu(ActionEvent event) throws IOException {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/MainMenu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/FareManagment.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
@@ -48,17 +50,29 @@ public class CartePersonnelleController {
 
         if (id.getText().trim().isEmpty() || userTypeComboBox.getValue().equals("")){
             System.out.println("Erreur : Missing information");
+            resultLabel.setText("Missing information");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
+            return;
         }
     if (userTypeComboBox.getValue().equals("Passenger")){
         int userID;
         try {
             userID = Integer.parseInt(id.getText().trim());
         } catch (NumberFormatException e) {
-            System.out.println("Erreur");
+
+            resultLabel.setText("Passengers ID must be a number");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
             return;
         }
         if(!Data.paasengerExists(userID)){
-            System.out.println("Erreur : User does not exist");
+            resultLabel.setText("User does not exist");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
             return;
         }
         try {
@@ -68,12 +82,20 @@ public class CartePersonnelleController {
             price.setText(String.valueOf(titre.getPrix()));
         } catch ( ReductionImpossibleException e) {
             System.out.println("User not eligible for a reduction");
+            resultLabel.setText("User not eligible for a reduction");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
             return;
         }
     } else if (userTypeComboBox.getValue().equals("Employee")) {
         String employeeID = id.getText().trim();
         if (!Data.employeeExists(employeeID)){
             System.out.println("Erreur : employee does not exist");
+            resultLabel.setText("Employee does not exist");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
             return;
         }
         try {
@@ -83,11 +105,19 @@ public class CartePersonnelleController {
             price.setText(String.valueOf(titre.getPrix()));
         } catch (ReductionImpossibleException e) {
             System.out.println("User not eligible for a reduction");
+            resultLabel.setText("User not eligible for a reduction");
+            resultLabel.setTextFill(javafx.scene.paint.Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
             return;
         }
     }
 
     System.out.println("Fare created succssfully");
+        resultLabel.setText("Fare created succssfully");
+        resultLabel.setTextFill(javafx.scene.paint.Color.GREEN);
+        resultLabel.setVisible(true);
+        resultLabel.setManaged(true);
 
 
     }

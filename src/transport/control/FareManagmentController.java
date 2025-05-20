@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import transport.core.GestionDeDonne;
 import transport.core.Ticket;
@@ -14,6 +15,13 @@ import transport.core.TitreTransport;
 import java.io.IOException;
 
 public class FareManagmentController {
+    public javafx.scene.control.Label resultLabel;
+
+    public void initialize() {
+        resultLabel.setVisible(false);
+        resultLabel.setManaged(false);
+    }
+
     @FXML
     private void navigateCartePersonnelle(ActionEvent event) throws IOException {
         try {
@@ -41,23 +49,20 @@ public class FareManagmentController {
     }
     @FXML
     private void acheterTicketSimple(ActionEvent t) {
-        TitreTransport ticket = new Ticket();
-        GestionDeDonne.ajouterTitre(ticket);
-        System.out.println("5o dz"+ticket.getPrix());
-
-    }
-    @FXML
-    private void navigate4 (ActionEvent event) {
         try {
-            Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/FareManagment.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
-
-            // Get the stage from the event
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.setScene(secondScene);
-            currentStage.show();
-        } catch (IOException e) {
+            TitreTransport ticket = new Ticket();
+            GestionDeDonne.ajouterTitre(ticket);
+        resultLabel.setText("Ticket created succssfully");
+        resultLabel.setTextFill(javafx.scene.paint.Color.GREEN);
+        resultLabel.setVisible(true);
+        resultLabel.setManaged(true);
+        } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("erreur creating ticket");
+            resultLabel.setText("Error creating ticket");
+            resultLabel.setTextFill(Color.RED);
+            resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
         }
     }
 

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import transport.core.GestionDeDonne;
 import transport.core.TitreNonValideException;
@@ -21,6 +22,13 @@ public class validateController {
     @FXML
     public javafx.scene.control.Label resultLabel;
 
+
+    @FXML
+    public void initialize() {
+        resultLabel.setVisible(false);
+        resultLabel.setManaged(false);
+    }
+
     @FXML
     private void verify(){
         try {
@@ -28,28 +36,38 @@ public class validateController {
             if (GestionDeDonne.titreExists(id)) {
                 TitreTransport titre = GestionDeDonne.getTitreParId(id);
                 if (titre.estValide(LocalDate.now())){
-                    resultLabel.setText("The fare valide");
+                    resultLabel.setText("The fare is valide");
+                    resultLabel.setTextFill(javafx.scene.paint.Color.GREEN);
                     resultLabel.setVisible(true);
+                    resultLabel.setManaged(true);
                 }else {
                     resultLabel.setText("The fare is invalide");
+                    resultLabel.setTextFill(Color.RED);
                     resultLabel.setVisible(true);
+                    resultLabel.setManaged(true);
 
                 }
             } else {
                 resultLabel.setText("The fare does not exist");
+                resultLabel.setTextFill(Color.RED);
                 resultLabel.setVisible(true);
+                resultLabel.setManaged(true);
 
             }
         } catch (TitreNonValideException e) {
             resultLabel.setText("The fare is invalide");
+            resultLabel.setTextFill(Color.RED);
             resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
 
 
         }
 
         catch (NumberFormatException e) {
-            resultLabel.setText("The fare is invalide ");
+            resultLabel.setText("Fare id must be a number");
+            resultLabel.setTextFill(Color.RED);
             resultLabel.setVisible(true);
+            resultLabel.setManaged(true);
 
         }
     }
