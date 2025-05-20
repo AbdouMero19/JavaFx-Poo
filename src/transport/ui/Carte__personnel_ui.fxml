@@ -17,7 +17,7 @@
 
     <HBox alignment="CENTER" spacing="10">
         <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Enter ID:" />
-        <TextField fx:id="idText" prefWidth="200" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;" />
+        <TextField fx:id="id" prefWidth="200" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;" />
     </HBox>
 
     <HBox alignment="CENTER" spacing="10">
@@ -31,6 +31,13 @@
             </items>
         </ComboBox>
     </HBox>
+   <HBox alignment="CENTER" layoutX="50.0" layoutY="250.0" spacing="10">
+      <children>
+         <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Payment method:" />
+         <ComboBox fx:id="paymentSelect" prefHeight="27.0" prefWidth="155.0" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;">
+         </ComboBox>
+      </children>
+   </HBox>
 
     <!-- Ajout d'une autre ComboBox pour les options de carte qui apparaîtra selon le type d'utilisateur -->
     <HBox alignment="CENTER" spacing="10">
@@ -39,11 +46,11 @@
     <!-- Affichage du prix calculé -->
     <HBox alignment="CENTER" spacing="10">
         <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="Price:" />
-        <Label fx:id="priceText" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="0.00" />
+        <Label fx:id="price" style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="0.00" />
     </HBox>
 
     <Button fx:id="createButton" onAction="#achterCarte" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Create Card" />
-    
+
     <Button fx:id="backButton" onAction="#returnToMainMenu" style="-fx-font-size: 14; -fx-min-width: 200; -fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="Back" />
 
 </VBox>
