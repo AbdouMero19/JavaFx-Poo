@@ -7,7 +7,7 @@
 
 <VBox alignment="CENTER" prefHeight="760.0" prefWidth="501.0" spacing="20" style="-fx-background-color: #f0f0f0; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="transport.control.AddUserController">
 
-    <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="Add User" />
+    <Button style="-fx-font-size: 24; -fx-font-weight: bold; -fx-background-color: #9370DB; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #7A5DC7; -fx-border-width: 2; -fx-padding: 10 20;" text="Add User"/>
     <ImageView disable="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
         <image>
             <Image url="@../../../../../Pictures/ESI_run.jpeg" />
