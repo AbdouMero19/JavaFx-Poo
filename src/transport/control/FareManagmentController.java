@@ -28,7 +28,7 @@ public class FareManagmentController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/Carte__personnel_ui.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class FareManagmentController {
     public void navigate3(ActionEvent actionEvent) {
         try {
             Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/History.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
+            Scene secondScene = new Scene(AddUserRoot , 800 , 600);
 
             // Get the stage from the event
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -72,7 +72,7 @@ public class FareManagmentController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/MainMenu.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,7 +84,7 @@ public class FareManagmentController {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/Validate.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

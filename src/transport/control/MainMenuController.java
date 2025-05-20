@@ -24,7 +24,7 @@ public class MainMenuController {
     private void navigateUserManagement (ActionEvent event) {
         try {
             Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/UserManagement.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
+            Scene secondScene = new Scene(AddUserRoot , 800 , 600);
 
             // Get the stage from the event
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -39,7 +39,7 @@ public class MainMenuController {
     private void navigate (ActionEvent event) {
         try {
             Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/FareManagment.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
+            Scene secondScene = new Scene(AddUserRoot , 800 , 600);
 
             // Get the stage from the event
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

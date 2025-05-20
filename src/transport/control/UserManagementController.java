@@ -27,7 +27,7 @@ public class UserManagementController {
     private void addUser(ActionEvent event) throws IOException {
         try {
             Parent AddUserRoot = FXMLLoader.load(getClass().getResource("/transport/ui/AddUsers.fxml"));
-            Scene secondScene = new Scene(AddUserRoot);
+            Scene secondScene = new Scene(AddUserRoot , 800 , 600);
 
             // Get the stage from the event
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

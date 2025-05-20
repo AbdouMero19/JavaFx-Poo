@@ -23,12 +23,7 @@
     <HBox alignment="CENTER" spacing="10">
         <Label style="-fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="User Type:" />
         <ComboBox fx:id="userTypeComboBox" prefWidth="200" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #bdc3c7; -fx-border-width: 1;">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Employee" />
-                    <String fx:value="Passenger" />
-                </FXCollections>
-            </items>
+            
         </ComboBox>
     </HBox>
    <HBox alignment="CENTER" layoutX="50.0" layoutY="250.0" spacing="10">

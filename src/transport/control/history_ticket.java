@@ -133,7 +133,7 @@ public class history_ticket {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/transport/ui/FareManagment.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root, 800, 600));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
